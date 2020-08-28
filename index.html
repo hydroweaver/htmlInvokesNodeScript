@@ -1,0 +1,46 @@
+<!-- 1. add using http call 
+2. decide on what to show
+3. add head title -->
+
+<!DOCTYPE HTML>
+<html>
+	<body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen"/>
+	</head>
+	</body>
+		<p>API Data Explorer</p>
+		<div class="buttonDiv">
+			<label>Your API Key</label>
+			<input class = "inputText" id="apikey"></input>
+			<br>
+			<br>
+			<label>Your Client ID</label>
+			<input class = "inputText" id="clientid"></input>
+			<br>
+			<br>
+			<button class = "buttonclass" id = "clickme" onclick="authAndLoad()">Authorize & Load</button>
+			<button class = "buttonclass" id = "clickme" onclick="execute()">Call API</button>
+		</div>
+		<script>
+			function authAndLoad(){
+				fetch("CLOUD FUNCTION URL").then((response)=>{
+					console.log(response);
+					return response.json();
+					// fetch promise needs to be resolved to get the server response
+				}).then((jsonload)=>{
+					let div = document.getElementById("fetchUpdateDiv");
+					div.innerHTML = jsonload.message;
+				}).catch((err)=>{
+					console.log('Some Error Occurred', err);
+				});
+			}
+
+			function execute(){
+				let div = document.getElementById("fetchUpdateDiv");
+				div.innerHTML = "API Called";
+			}
+		</script>
+			<br></br>
+	<div id="fetchUpdateDiv"></div>
+</html>
