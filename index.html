@@ -24,7 +24,7 @@
 		</div>
 		<script>
 			function authAndLoad(){
-				fetch("CLOUD FUNCTION URL").then((response)=>{
+				fetch("https://asia-south1-balmy-apogee-277211.cloudfunctions.net/youtubeapi").then((response)=>{
 					console.log(response);
 					return response.json();
 					// fetch promise needs to be resolved to get the server response
